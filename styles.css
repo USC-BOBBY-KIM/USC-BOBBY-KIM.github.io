@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.96);
   --text: #222222;
   --muted: #5d646b;
   --soft: #f5f6f7;
@@ -8,6 +9,33 @@
   --link: #2b6aa0;
   --link-dark: #1f4f78;
   --accent: #9b2f2f;
+  --heading: #1f2428;
+  --body-text: #41484f;
+  --role-text: #424a52;
+  --toggle-bg: #f1f4f7;
+  --toggle-border: #cfd7df;
+  --toggle-thumb: #ffffff;
+  --toggle-text: #36424f;
+}
+
+body[data-theme="night"] {
+  color-scheme: dark;
+  --bg: #101418;
+  --header-bg: rgba(16, 20, 24, 0.96);
+  --text: #e8edf2;
+  --muted: #a8b3bf;
+  --soft: #192129;
+  --line: #2f3b46;
+  --link: #8bbce8;
+  --link-dark: #b8d8f2;
+  --accent: #d77878;
+  --heading: #f1f5f8;
+  --body-text: #c7d0d9;
+  --role-text: #c1cad3;
+  --toggle-bg: #1f2a33;
+  --toggle-border: #40505f;
+  --toggle-thumb: #8bbce8;
+  --toggle-text: #e8edf2;
 }
 
 * {
@@ -40,7 +68,7 @@ a:hover {
 
 .masthead {
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--header-bg);
 }
 
 .masthead-inner {
@@ -54,7 +82,7 @@ a:hover {
 }
 
 .site-title {
-  color: #1f2428;
+  color: var(--heading);
   font-size: 1.18rem;
   font-weight: 700;
 }
@@ -73,7 +101,44 @@ a:hover {
 }
 
 .site-nav a {
-  color: #41484f;
+  color: var(--body-text);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  min-width: 86px;
+  height: 34px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 3px 10px 3px 4px;
+  border: 1px solid var(--toggle-border);
+  border-radius: 999px;
+  background: var(--toggle-bg);
+  color: var(--toggle-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.theme-toggle-thumb {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--toggle-thumb);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
+}
+
+body[data-theme="night"] .theme-toggle {
+  justify-content: flex-end;
+  padding-right: 4px;
+  padding-left: 10px;
+}
+
+body[data-theme="night"] .theme-toggle-thumb {
+  order: 2;
 }
 
 .page {
@@ -102,7 +167,7 @@ a:hover {
   background:
     linear-gradient(135deg, rgba(43, 106, 160, 0.14), rgba(155, 47, 47, 0.12)),
     var(--soft);
-  color: #243447;
+  color: var(--heading);
   font-size: 3.2rem;
   font-weight: 750;
   letter-spacing: 0;
@@ -116,7 +181,7 @@ a:hover {
 
 .sidebar h1 {
   margin: 22px 0 0;
-  color: #1f2428;
+  color: var(--heading);
   font-size: 1.55rem;
   line-height: 1.18;
   letter-spacing: 0;
@@ -124,7 +189,7 @@ a:hover {
 
 .role {
   margin: 8px 0 0;
-  color: #424a52;
+  color: var(--role-text);
   font-size: 1.02rem;
 }
 
@@ -168,7 +233,7 @@ a:hover {
   margin: 0 0 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--line);
-  color: #1f2428;
+  color: var(--heading);
   font-size: 1.55rem;
   line-height: 1.25;
   letter-spacing: 0;
@@ -186,7 +251,7 @@ a:hover {
 .entry h3,
 .publication-list h3 {
   margin: 0 0 5px;
-  color: #1f2428;
+  color: var(--heading);
   font-size: 1.05rem;
   line-height: 1.35;
   letter-spacing: 0;
@@ -208,7 +273,7 @@ a:hover {
 
 .entry p,
 .publication-list p {
-  color: #41484f;
+  color: var(--body-text);
 }
 
 ul,
@@ -254,6 +319,10 @@ li {
   .site-nav {
     justify-content: flex-start;
     gap: 12px 16px;
+  }
+
+  .theme-toggle {
+    align-self: flex-start;
   }
 
   .page {

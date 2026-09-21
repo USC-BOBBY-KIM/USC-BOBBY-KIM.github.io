@@ -21,6 +21,10 @@
           <a href="#education">Education</a>
           <a href="./assets/JuannKim_CV.pdf">CV</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          <span class="theme-toggle-text">Day</span>
+        </button>
       </div>
     </header>
 
@@ -69,26 +73,8 @@
           <h2>Publications</h2>
           <ol class="publication-list">
             <li>
-              <h3>
-                Knowing How Far to Steer: Adaptive Intervention Strength for Crosslingual Knowledge
-                Transfer
-              </h3>
-              <p>In Progress - EACL, 2027</p>
-            </li>
-            <li>
-              <h3>
-                Where Does the Language Barrier Live? Localizing the Crosslingual Knowledge Barrier
-                Across Layers
-              </h3>
-              <p>In Progress - EACL, 2027</p>
-            </li>
-            <li>
-              <h3>Measuring Control Geometry in Large Language Models</h3>
-              <p>In Progress - AAAI, 2027</p>
-            </li>
-            <li>
-              <h3>Evil Persona Vectors are Cross-lingually Universal</h3>
-              <p>Under Review - EMNLP, 2026</p>
+              <h3>Cross-Lingual Transfer of Evil Vectors Is Directionally Asymmetric</h3>
+              <p>EMNLP MRL, 2026</p>
             </li>
             <li>
               <h3>
@@ -195,5 +181,27 @@
     <footer class="footer">
       <p>&copy; 2026 Juann Kim. Powered by HTML &amp; CSS.</p>
     </footer>
+    <script>
+      (function () {
+        var body = document.body;
+        var toggle = document.querySelector(".theme-toggle");
+        var label = document.querySelector(".theme-toggle-text");
+        var storedTheme = window.localStorage.getItem("theme");
+        var initialTheme = storedTheme === "night" ? "night" : "day";
+
+        function setTheme(theme) {
+          var isNight = theme === "night";
+          body.dataset.theme = theme;
+          toggle.setAttribute("aria-pressed", String(isNight));
+          label.textContent = isNight ? "Night" : "Day";
+          window.localStorage.setItem("theme", theme);
+        }
+
+        setTheme(initialTheme);
+        toggle.addEventListener("click", function () {
+          setTheme(body.dataset.theme === "night" ? "day" : "night");
+        });
+      })();
+    </script>
   </body>
 </html>
