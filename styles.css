@@ -306,6 +306,11 @@ body[data-theme="night"] .theme-icon-night {
   font-weight: 600;
 }
 
+.inline-highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 ul,
 ol {
   margin-top: 8px;
