@@ -208,15 +208,15 @@ body[data-theme="night"] .theme-icon-night {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 
-.contact-list a::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
+.contact-icon {
+  display: inline-grid;
+  width: 1.2em;
+  place-items: center;
+  font-size: 1.05em;
+  line-height: 1;
 }
 
 .content {
