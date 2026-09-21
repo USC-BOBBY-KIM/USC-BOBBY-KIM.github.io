@@ -24,7 +24,7 @@
           <a href="#publications">Publications</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="./assets/JuannKim_CV.pdf">CV</a>
+          <a href="./assets/JuannKim_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
         <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Enable night theme" title="Enable night theme">
           <i class="fa-regular fa-sun theme-icon theme-icon-day" aria-hidden="true"></i>
@@ -48,12 +48,12 @@
 
         <div class="contact-list" aria-label="Contact links">
           <a href="mailto:juannkim@usc.edu"><i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>Email</a>
-          <a href="https://scholar.google.com/citations?user=K04_VFQAAAAJ&hl=en&authuser=3">
+          <a href="https://scholar.google.com/citations?user=K04_VFQAAAAJ&hl=en&authuser=3" target="_blank" rel="noopener noreferrer">
             <i class="ai ai-google-scholar contact-icon" aria-hidden="true"></i>Google Scholar
           </a>
-          <a href="https://github.com/USC-BOBBY-KIM"><i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>GitHub</a>
-          <a href="https://www.linkedin.com/in/juann-kim-6a3879223/"><i class="fa-brands fa-linkedin contact-icon linkedin-icon" aria-hidden="true"></i>LinkedIn</a>
-          <a href="./assets/JuannKim_CV.pdf"><i class="fa-regular fa-file-lines contact-icon" aria-hidden="true"></i>CV</a>
+          <a href="https://github.com/USC-BOBBY-KIM" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>GitHub</a>
+          <a href="https://www.linkedin.com/in/juann-kim-6a3879223/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin contact-icon linkedin-icon" aria-hidden="true"></i>LinkedIn</a>
+          <a href="./assets/JuannKim_CV.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-file-lines contact-icon" aria-hidden="true"></i>CV</a>
         </div>
       </aside>
 
@@ -76,7 +76,7 @@
             with Purdue University on acoustic and drone-based detection systems. These experiences in
             safety-critical settings continue to shape my focus on trustworthy AI.
           </p>
-          <p>Here is my <a href="./assets/JuannKim_CV.pdf">CV</a>.</p>
+          <p>Here is my <a href="./assets/JuannKim_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>.</p>
         </section>
 
         <section id="publications" class="section">
@@ -118,9 +118,9 @@
               <p>IEEE International Conference on Robotic Computing, 2022</p>
             </li>
           </ol>
-          <button class="publication-toggle" type="button" aria-expanded="false" aria-controls="additional-publications">
-            <span class="publication-toggle-icon" aria-hidden="true">⌄</span>
-            <span class="publication-toggle-text">SHOW MORE</span>
+          <button class="publication-toggle" type="button" aria-expanded="false" aria-controls="additional-publications" aria-label="Show 3 more publications">
+            <span class="publication-toggle-icon" aria-hidden="true"><i class="fa-solid fa-chevron-down"></i></span>
+            <span class="publication-toggle-text">Show 3 more publications</span>
           </button>
         </section>
 
@@ -223,7 +223,8 @@
         publicationToggle.addEventListener("click", function () {
           var isExpanded = publicationList.classList.toggle("is-expanded");
           publicationToggle.setAttribute("aria-expanded", String(isExpanded));
-          publicationToggleText.textContent = isExpanded ? "SHOW LESS" : "SHOW MORE";
+          publicationToggleText.textContent = isExpanded ? "Show fewer publications" : "Show 3 more publications";
+          publicationToggle.setAttribute("aria-label", publicationToggleText.textContent);
         });
 
         fetch("https://api.github.com/repos/USC-BOBBY-KIM/USC-BOBBY-KIM.github.io/commits/main")
