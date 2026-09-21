@@ -12,10 +12,7 @@
   --heading: #1f2428;
   --body-text: #41484f;
   --role-text: #424a52;
-  --toggle-bg: #f1f4f7;
-  --toggle-border: #cfd7df;
-  --toggle-thumb: #ffffff;
-  --toggle-text: #36424f;
+  --toggle-icon: #454c52;
 }
 
 body[data-theme="night"] {
@@ -32,10 +29,7 @@ body[data-theme="night"] {
   --heading: #f1f5f8;
   --body-text: #c7d0d9;
   --role-text: #c1cad3;
-  --toggle-bg: #1f2a33;
-  --toggle-border: #40505f;
-  --toggle-thumb: #8bbce8;
-  --toggle-text: #e8edf2;
+  --toggle-icon: #f3f5f7;
 }
 
 * {
@@ -105,40 +99,44 @@ a:hover {
 }
 
 .theme-toggle {
-  display: inline-flex;
-  min-width: 86px;
-  height: 34px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  padding: 3px 10px 3px 4px;
-  border: 1px solid var(--toggle-border);
-  border-radius: 999px;
-  background: var(--toggle-bg);
-  color: var(--toggle-text);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--toggle-icon);
   cursor: pointer;
-  font: inherit;
-  font-size: 0.86rem;
-  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
 }
 
-.theme-toggle-thumb {
-  width: 26px;
-  height: 26px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: var(--toggle-thumb);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
+.theme-toggle:focus-visible,
+.publication-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
 }
 
-body[data-theme="night"] .theme-toggle {
-  justify-content: flex-end;
-  padding-right: 4px;
-  padding-left: 10px;
+.theme-icon {
+  grid-area: 1 / 1;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
-body[data-theme="night"] .theme-toggle-thumb {
-  order: 2;
+.theme-icon-night {
+  opacity: 0;
+  transform: scale(0.75);
+}
+
+body[data-theme="night"] .theme-icon-day {
+  opacity: 0;
+  transform: scale(0.75);
+}
+
+body[data-theme="night"] .theme-icon-night {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .page {
@@ -293,6 +291,41 @@ li {
 
 .publication-list li::marker {
   color: var(--muted);
+}
+
+.publication-list:not(.is-expanded) .additional-publication {
+  display: none;
+}
+
+.publication-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 0;
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.publication-toggle:hover {
+  color: var(--heading);
+}
+
+.publication-toggle-icon {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 0.7;
+  transition: transform 160ms ease;
+}
+
+.publication-list.is-expanded + .publication-toggle .publication-toggle-icon {
+  transform: rotate(180deg);
 }
 
 .footer {

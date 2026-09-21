@@ -21,9 +21,9 @@
           <a href="#education">Education</a>
           <a href="./assets/JuannKim_CV.pdf">CV</a>
         </nav>
-        <button class="theme-toggle" type="button" aria-pressed="false">
-          <span class="theme-toggle-thumb" aria-hidden="true"></span>
-          <span class="theme-toggle-text">Day</span>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Enable night theme" title="Enable night theme">
+          <span class="theme-icon theme-icon-day" aria-hidden="true">☀</span>
+          <span class="theme-icon theme-icon-night" aria-hidden="true">☾</span>
         </button>
       </div>
     </header>
@@ -71,7 +71,7 @@
 
         <section id="publications" class="section">
           <h2>Publications</h2>
-          <ol class="publication-list">
+          <ol id="additional-publications" class="publication-list">
             <li>
               <h3>Cross-Lingual Transfer of Evil Vectors Is Directionally Asymmetric</h3>
               <p>EMNLP MRL, 2026</p>
@@ -85,7 +85,7 @@
             </li>
             <li>
               <h3>Improving Drone Classification with Audio-Derived Visual Features</h3>
-              <p>Accepted - IEEE International Conference on Robotic Computing, 2024</p>
+              <p>IEEE International Conference on Robotic Computing, 2024</p>
             </li>
             <li>
               <h3>From Detection to Intruder Alarm: AI-powered Surveillance System</h3>
@@ -95,19 +95,23 @@
               <h3>Speech Recognition Model Robust to Battlefield Noise</h3>
               <p>Journal of the Korea Institute of Information and Communication Engineering, 2024</p>
             </li>
-            <li>
+            <li class="additional-publication">
               <h3>Self-Supervised Drone Detection Using Acoustic Data</h3>
               <p>IEEE International Conference on Robotic Computing, 2023</p>
             </li>
-            <li>
+            <li class="additional-publication">
               <h3>How Far Can a Drone be Detected? A Drone-to-Drone Detection System Using Sensor Fusion</h3>
               <p>International Conference on Agents and Artificial Intelligence, 2023</p>
             </li>
-            <li>
+            <li class="additional-publication">
               <h3>Deep Learning Based Malicious Drone Detection Using Acoustic and Image Data</h3>
               <p>IEEE International Conference on Robotic Computing, 2022</p>
             </li>
           </ol>
+          <button class="publication-toggle" type="button" aria-expanded="false" aria-controls="additional-publications">
+            <span class="publication-toggle-icon" aria-hidden="true">⌄</span>
+            <span class="publication-toggle-text">SHOW MORE</span>
+          </button>
         </section>
 
         <section id="experience" class="section">
@@ -185,7 +189,9 @@
       (function () {
         var body = document.body;
         var toggle = document.querySelector(".theme-toggle");
-        var label = document.querySelector(".theme-toggle-text");
+        var publicationList = document.querySelector(".publication-list");
+        var publicationToggle = document.querySelector(".publication-toggle");
+        var publicationToggleText = document.querySelector(".publication-toggle-text");
         var storedTheme = window.localStorage.getItem("theme");
         var initialTheme = storedTheme === "night" ? "night" : "day";
 
@@ -193,13 +199,20 @@
           var isNight = theme === "night";
           body.dataset.theme = theme;
           toggle.setAttribute("aria-pressed", String(isNight));
-          label.textContent = isNight ? "Night" : "Day";
+          toggle.setAttribute("aria-label", isNight ? "Enable day theme" : "Enable night theme");
+          toggle.setAttribute("title", isNight ? "Enable day theme" : "Enable night theme");
           window.localStorage.setItem("theme", theme);
         }
 
         setTheme(initialTheme);
         toggle.addEventListener("click", function () {
           setTheme(body.dataset.theme === "night" ? "day" : "night");
+        });
+
+        publicationToggle.addEventListener("click", function () {
+          var isExpanded = publicationList.classList.toggle("is-expanded");
+          publicationToggle.setAttribute("aria-expanded", String(isExpanded));
+          publicationToggleText.textContent = isExpanded ? "SHOW LESS" : "SHOW MORE";
         });
       })();
     </script>
