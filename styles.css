@@ -191,32 +191,45 @@ body[data-theme="night"] .theme-icon-night {
   font-size: 1.02rem;
 }
 
-.location {
-  margin: 18px 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
+.profile-details,
 .contact-list {
   display: grid;
   gap: 8px;
-  margin-top: 16px;
   font-size: 0.95rem;
+}
+
+.profile-details {
+  margin-top: 22px;
+}
+
+.profile-details p {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+.profile-icon,
+.contact-icon {
+  width: 1.25em;
+  color: var(--body-text);
+  font-size: 1.18em;
+  text-align: center;
+}
+
+.contact-list {
+  margin-top: 10px;
 }
 
 .contact-list a {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 7px;
+  gap: 12px;
 }
 
-.contact-icon {
-  display: inline-grid;
-  width: 1.2em;
-  place-items: center;
-  font-size: 1.05em;
-  line-height: 1;
+.linkedin-icon {
+  color: #0a66c2;
 }
 
 .content {
@@ -381,9 +394,13 @@ li {
     margin-top: 0;
   }
 
-  .role,
-  .location {
+  .role {
     margin-top: 4px;
+  }
+
+  .profile-details {
+    grid-column: 1 / -1;
+    margin-top: 14px;
   }
 
   .contact-list {
