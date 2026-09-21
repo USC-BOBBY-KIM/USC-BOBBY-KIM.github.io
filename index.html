@@ -83,6 +83,10 @@
           <h2>Publications</h2>
           <ol id="additional-publications" class="publication-list">
             <li>
+              <h3>Same Persona, Different Tongues: Persona Vectors Share a Language-Agnostic Geometry</h3>
+              <p><span class="publication-status">In progress</span> · NAACL, 2027</p>
+            </li>
+            <li>
               <h3>Cross-Lingual Transfer of Evil Vectors Is Directionally Asymmetric</h3>
               <p>EMNLP MRL, 2026</p>
             </li>
@@ -101,7 +105,7 @@
               <h3>From Detection to Intruder Alarm: AI-powered Surveillance System</h3>
               <p>Korean Institute of Information Scientists and Engineers, 2024</p>
             </li>
-            <li>
+            <li class="additional-publication">
               <h3>Speech Recognition Model Robust to Battlefield Noise</h3>
               <p>Journal of the Korea Institute of Information and Communication Engineering, 2024</p>
             </li>
@@ -118,9 +122,9 @@
               <p>IEEE International Conference on Robotic Computing, 2022</p>
             </li>
           </ol>
-          <button class="publication-toggle" type="button" aria-expanded="false" aria-controls="additional-publications" aria-label="Show 3 more publications">
+          <button class="publication-toggle" type="button" aria-expanded="false" aria-controls="additional-publications" aria-label="Show more publications">
             <span class="publication-toggle-icon" aria-hidden="true"><i class="fa-solid fa-chevron-down"></i></span>
-            <span class="publication-toggle-text">Show 3 more publications</span>
+            <span class="publication-toggle-text">Show more publications</span>
           </button>
         </section>
 
@@ -223,7 +227,7 @@
         publicationToggle.addEventListener("click", function () {
           var isExpanded = publicationList.classList.toggle("is-expanded");
           publicationToggle.setAttribute("aria-expanded", String(isExpanded));
-          publicationToggleText.textContent = isExpanded ? "Show fewer publications" : "Show 3 more publications";
+          publicationToggleText.textContent = isExpanded ? "Show fewer publications" : "Show more publications";
           publicationToggle.setAttribute("aria-label", publicationToggleText.textContent);
         });
 

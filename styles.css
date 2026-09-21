@@ -301,6 +301,11 @@ body[data-theme="night"] .theme-icon-night {
   color: var(--body-text);
 }
 
+.publication-status {
+  color: var(--muted);
+  font-weight: 600;
+}
+
 ul,
 ol {
   margin-top: 8px;
