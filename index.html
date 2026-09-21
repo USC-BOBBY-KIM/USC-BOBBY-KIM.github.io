@@ -27,8 +27,8 @@
           <a href="./assets/JuannKim_CV.pdf">CV</a>
         </nav>
         <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Enable night theme" title="Enable night theme">
-          <span class="theme-icon theme-icon-day" aria-hidden="true">☀</span>
-          <span class="theme-icon theme-icon-night" aria-hidden="true">☾</span>
+          <i class="fa-regular fa-sun theme-icon theme-icon-day" aria-hidden="true"></i>
+          <i class="fa-regular fa-moon theme-icon theme-icon-night" aria-hidden="true"></i>
         </button>
       </div>
     </header>
@@ -193,7 +193,7 @@
     </main>
 
     <footer class="footer">
-      <p>&copy; 2026 Juann Kim. Last updated: September 20, 2026.</p>
+      <p>&copy; 2026 Juann Kim. Last updated: <time id="last-updated" datetime="2026-09-20">September 20, 2026</time>.</p>
     </footer>
     <script>
       (function () {
@@ -202,6 +202,7 @@
         var publicationList = document.querySelector(".publication-list");
         var publicationToggle = document.querySelector(".publication-toggle");
         var publicationToggleText = document.querySelector(".publication-toggle-text");
+        var lastUpdated = document.querySelector("#last-updated");
         var storedTheme = window.localStorage.getItem("theme");
         var initialTheme = storedTheme === "night" ? "night" : "day";
 
@@ -224,6 +225,32 @@
           publicationToggle.setAttribute("aria-expanded", String(isExpanded));
           publicationToggleText.textContent = isExpanded ? "SHOW LESS" : "SHOW MORE";
         });
+
+        fetch("https://api.github.com/repos/USC-BOBBY-KIM/USC-BOBBY-KIM.github.io/commits/main")
+          .then(function (response) {
+            return response.ok ? response.json() : null;
+          })
+          .then(function (commit) {
+            if (!commit || !commit.commit || !commit.commit.committer || !commit.commit.committer.date) {
+              return;
+            }
+
+            var updatedAt = new Date(commit.commit.committer.date);
+            if (Number.isNaN(updatedAt.getTime())) {
+              return;
+            }
+
+            lastUpdated.dateTime = updatedAt.toISOString().slice(0, 10);
+            lastUpdated.textContent = new Intl.DateTimeFormat("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+              timeZone: "America/Los_Angeles"
+            }).format(updatedAt);
+          })
+          .catch(function () {
+            // Keep the deployed date when the public GitHub API is unavailable.
+          });
       })();
     </script>
   </body>

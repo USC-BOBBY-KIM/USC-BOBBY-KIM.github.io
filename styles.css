@@ -100,17 +100,23 @@ a:hover {
 
 .theme-toggle {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   place-items: center;
-  align-items: center;
   padding: 0;
-  border: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
   background: transparent;
   color: var(--toggle-icon);
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.1rem;
   line-height: 1;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--line);
+  background: var(--soft);
 }
 
 .theme-toggle:focus-visible,
@@ -137,6 +143,14 @@ body[data-theme="night"] .theme-icon-day {
 body[data-theme="night"] .theme-icon-night {
   opacity: 1;
   transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-icon,
+  .publication-toggle-icon {
+    transition: none;
+  }
 }
 
 .page {
