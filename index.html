@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-theme="night">
     <header class="masthead">
       <div class="masthead-inner">
         <a class="site-title" href="./">Juann Kim</a>
@@ -26,7 +26,7 @@
           <a href="#education">Education</a>
           <a href="./assets/JuannKim_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
         </nav>
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Enable night theme" title="Enable night theme">
+        <button class="theme-toggle" type="button" aria-pressed="true" aria-label="Enable day theme" title="Enable day theme">
           <i class="fa-regular fa-sun theme-icon theme-icon-day" aria-hidden="true"></i>
           <i class="fa-regular fa-moon theme-icon theme-icon-night" aria-hidden="true"></i>
         </button>
@@ -215,7 +215,7 @@
         var publicationToggleText = document.querySelector(".publication-toggle-text");
         var lastUpdated = document.querySelector("#last-updated");
         var storedTheme = window.localStorage.getItem("theme");
-        var initialTheme = storedTheme === "night" ? "night" : "day";
+        var initialTheme = storedTheme === "day" ? "day" : "night";
 
         function setTheme(theme) {
           var isNight = theme === "night";
